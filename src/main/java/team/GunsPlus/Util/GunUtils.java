@@ -24,6 +24,8 @@ import org.bukkit.entity.SmallFireball;
 import org.bukkit.entity.Snowball;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.BlockIterator;
 import org.getspout.spoutapi.gui.GenericTexture;
 import org.getspout.spoutapi.inventory.SpoutItemStack;
@@ -383,10 +385,16 @@ public class GunUtils {
 	}
 
 	public static void zoomOut(GunsPlusPlayer gp) {
-		// PotionEffect pe = new PotionEffect(PotionEffectType.SLOW, 0, 100);
-		// p.addPotionEffect(pe, true);
+		PotionEffect pe = new PotionEffect(PotionEffectType.SLOW, 0, 0);
 		SpoutPlayer sp = (SpoutPlayer) gp.getPlayer();
 		CraftPlayer cp = (CraftPlayer) sp;
+		sp.addPotionEffect(pe, true);
+		for (PotionEffect effect : sp.getActivePotionEffects()) {
+			PotionEffectType effecttype = effect.getType();
+			if (effecttype.equals(PotionEffectType.SLOW)) {
+				sp.removePotionEffect(effecttype);
+			}
+		}
 
 		try {
 			Field field = EntityLiving.class.getDeclaredField("effects");
@@ -394,8 +402,8 @@ public class GunUtils {
 			@SuppressWarnings("rawtypes")
 			HashMap effects = (HashMap) field.get(cp.getHandle());
 			effects.remove(2);
-			EntityPlayer player = cp.getHandle();
-			player.playerConnection.sendPacket(new Packet42RemoveMobEffect(player.id, new MobEffect(2, 0, 0)));
+			//EntityPlayer player = cp.getHandle();
+			//player.playerConnection.sendPacket(new Packet42RemoveMobEffect(player.id, new MobEffect(2, 0, 0)));
 			cp.getHandle().getDataWatcher().watch(8, Byte.valueOf((byte) 0));
 		} catch (Exception e) {
 			e.printStackTrace();

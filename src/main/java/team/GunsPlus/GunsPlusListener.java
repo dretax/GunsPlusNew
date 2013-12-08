@@ -335,13 +335,14 @@ public class GunsPlusListener implements Listener {
 //	}
 	
 	public void credits(Player p) {
-		credit = ("This server is running " + ChatColor.GOLD + "Guns+" + ChatColor.DARK_GREEN + " By:" + plugin.getDescription().getAuthors());
-		if(PlayerUtils.hasSpoutcraft(p)) ((SpoutPlayer)p).sendNotification(ChatColor.GRAY + "Guns+", ChatColor.DARK_GREEN + "By " + plugin.getDescription().getAuthors(), Material.SULPHUR);
+		credit = ("This server is running " + ChatColor.GOLD + "Guns+" + ChatColor.DARK_GREEN + " Fixed By:" + "DreTaX");
+		//if(PlayerUtils.hasSpoutcraft(p)) ((SpoutPlayer)p).sendNotification(ChatColor.GRAY + "Guns+", ChatColor.DARK_GREEN + "By " + plugin.getDescription().getAuthors(), Material.SULPHUR);
+		if(PlayerUtils.hasSpoutcraft(p)) ((SpoutPlayer)p).sendNotification(ChatColor.GRAY + "Guns+", ChatColor.DARK_GREEN + "Fixed By " + "DreTaX", Material.SULPHUR);
 		else p.sendMessage(credit);
 	}
 	
 	private void creditsDelayed(final Player p) {
-		Bukkit.getScheduler().scheduleAsyncDelayedTask(plugin, new Runnable() {
+		Bukkit.getScheduler().runTaskLater(plugin, new Runnable() {
 			public void run() {
 				credits(p);
 			}
