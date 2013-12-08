@@ -1,0 +1,98 @@
+# This is used by the Api+ Loadout Manager
+Name: guns
+
+# Here you can configure your very own guns!
+# Look at the examples to see how it works.
+
+Sniper:
+    # this is the damage dealt by the gun: 8 = 4 hearts
+    damage: 8 
+    # this is the damage dealt by the gun when used in hand-to-hand combat
+    melee-damage: 1
+    # this is the damage dealt by the gun if it is a headshot
+    head-shot-damage: 20
+    # this is the range within that the gun will hit an entity (in blocks)
+    range: 70
+    # this is the time the player needs to reload the gun in ticks
+    reload-time: 60
+    # the delay between two shots in ticks -> firerate
+    shot-delay: 40
+    # this is the amount of shots from reload to reload -> clipsize
+    shots-between-reload: 6
+    # this is the speed of the knockback of one shot.
+    knockback: 40
+    # this is the recoil of one shot in degree. Note: this is just a vertical recoil and will stop the players movement.
+    recoil: 0
+    # this is the url of the texture you want to use for the gun.
+    texture: 'http://dl.dropbox.com/u/44243469/GunPack/Textures/sniper.png'
+    # this is the texture which will show up on zoom.
+    zoom-texture: 'http://dl.dropbox.com/u/44243469/GunPack/Textures/sniperScreen.png'
+    # The sound which is played on shot.
+    shot-sound:
+        url: 'http://dl.dropbox.com/u/44243469/GunPack/Sounds/sniper.ogg'
+        # the max volume is 100%
+        volume: 100
+    # The sound which is played on reload.
+    reload-sound:
+        url: 'http://dl.dropbox.com/u/44243469/GunPack/Sounds/reload.ogg'
+        volume: 75
+    # this is the ammo the gun will consume. You have to take the name from the ammo.yml or you put a bukkit item id/name; NOTE: You can assign multiple ammo types aswell.
+    ammo: 'SniperAmmo, sulphur'
+    # the zoomfactor of the gun; you can specify how to zoom in general.yml
+    zoom-factor: 9
+    # this is the shooted projectile; there are following types: ARROW, SNOWBALL, EGG, FIREBALL, FIRECHARGE, ENDERPEARL, NONE
+    projectile:
+        type: 'NONE'
+        speed: 0
+    # here you can define the accuracy of the gun: the random-factor basically defines a certain hit randomness; the spread angle, separated by the pointer (->) defines the spread if zoomed in or out
+    # missing-chance defines a chance of missing the target in percent. e.g. 50 means the gun misses every second shot. Again the pointer separates between zoomed or not
+    # this nodes can be modified to very custom accuracy values. 
+    accuracy: 
+        random-factor: 3.0
+        spread-angle: '3->0'
+        missing-chance: '60->5'
+    # defines the de-/increase of the damage per block (e.g. 1 would be an increase of 1 per 1 block distance to the target, -1 would decrease the damage by one per block)
+    damage-change: -0.1
+    # here you put the probability of a critical hit, which means a one-hit-kill. 100 is every shoot, 1 is very rare.
+    critical: 10
+    # this node sets the weight of the gun, this will modify the walk speed of the player that holds the gun
+    weight: 30
+    # specifies if the gun will be shown in the hud or not.
+    hud-enabled: true
+    # with this node you can set the available additions for this gun, use NONE for no Addition
+    additions: Silencer, ExtraScope, Bayonet
+    # this sets wheater you can mount a gun on the tripod or not
+    mountable: false
+    # if you put false in here you can't shoot with this gun at all, but you can configure it like mountable true and shootable false so that you can only use it if mounted
+    shootable: true
+    # the type specifies the fire behavoir of the gun: single(you have to press for every single shot), automatic(will shoot as long as you hold the button)
+    fire-behavior: single
+    # this is/are the effect/s which is/are played when the gun shoots
+    effects:
+    # In this section you can define your own effects that will occur when you fire the gun, see the Configuration Page on BukkitDev for further explanations
+    # This is just an unique name to differentiate between the effects
+        smoke_effect:
+    # The type of the effect
+            type: particle
+    # The args node contains all arguments needed for the effect type
+            args:
+            - type: smoke
+            - amount: 4
+            - max-age: 60
+            - gravity: 1
+            - scale: 1
+    # The target node defines at which target the effect will be applied on
+            target:
+    # There are 5 target types: targetlocation, targetentity, shooterlocation, shooter, flightpath
+                type: flightpath
+    # Again there is an args node for custom arguments of the target type
+                args:
+                - length: 20
+        potion_effect:
+            type: potion
+            args:
+            - id: 9
+            - duration: 100
+            - strength: 5
+            target:
+                type: targetentity

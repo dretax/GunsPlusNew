@@ -1,0 +1,42 @@
+name: GunsPlus
+main: team.GunsPlus.GunsPlus
+version: 2.0
+depend: [ApiPlus, Spout]
+soft-depend: [LWC, FurnaceAPI, WorldGuard, MachinaRedstoneBridge, Showcase]
+authors: [Atlan1, SirTyler]
+website: http://dev.bukkit.org/server-mods/guns/
+description: >
+             Guns+ ~ Guns, Guns, Guns Galore!
+commands:
+    guns+:
+        description: Guns+ commands.
+        aliases: [g+,guns,+]
+        usage: /guns+ help - Displays the Help Menu.
+permissions:
+    gunsplus.*:
+        description: Give all permissions
+        children:
+            gunsplus.hud: true
+            gunsplus.command.reload: true
+            gunsplus.command.list: true
+            gunsplus.fire.all: true
+            gunsplus.zoom.all: true
+            gunsplus.reload.all: true
+    gunsplus.hud:
+        description: Give permission for showing the hud.
+        default: true
+    gunsplus.command.reload:
+        description: Give permission for the reload command.
+        default: op
+    gunsplus.command.list:
+        description: Give permission for the list command.
+        default: true
+    gunsplus.fire.all:
+        description: Give permission to fire all guns.
+        default: true
+    gunsplus.zoom.all:
+        description: Give permission to zoom all guns.
+        default: true
+    gunsplus.reload.all:
+        description: Give permission to reload all guns.
+        default: true

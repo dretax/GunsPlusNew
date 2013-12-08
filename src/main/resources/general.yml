@@ -1,0 +1,68 @@
+# This is the general config file. Everything in here will affect all guns and the whole plugin
+
+# Write the ids of the custom items so you can copy them and use it in other plugins( e.g. mobarena)
+id-info-guns: true
+id-info-ammo: true
+id-info-additions: true
+
+# Write the loaded items in the log on plugin start
+loaded-guns: true
+loaded-ammo: true
+loaded-additions: true
+
+# Show Debug Messages, useful for Error finding
+show-debug: false
+
+# Show Warnings in the console if a node is missing
+show-warnings: true
+
+# Used to en-/disable permission support
+use-permissions: true
+
+# Send notifications for special events, e.g. headshot
+send-notifications: true
+
+# Should the plugin auto reload an empty gun or not
+auto-reload: true
+
+# Sets tool-like holding style for guns
+tool-like-gun-holding: true
+
+# These are the keys/buttons for zooming/fireing/reloading the gun
+# Available are: 'right', 'left', all characters and numbers on your keyboard
+# You can put a '_' behind the node to specify that you want a holding key NOTE: this only affects zooming
+zoom: left_
+fire: right
+reload: R
+
+hud:
+    # if the hud should be enabled
+    enabled: true
+    # if you want you can customize the background texture
+    background: 'http://dl.dropbox.com/u/44243469/GunPack/Textures/HUDBackground.png'
+    # if you don't like the default position, just play around with positioning by the x/y value
+    position:
+        X: 20
+        Y: 20
+tripod:
+    # enabled/disabled
+    enabled: true
+    # the texture to use for the block 
+    # this texture is 256x16. Similar to the terrain.png of vanilla you have different subtextures sized 16x16.
+    # the first 3 subtextures are for the tripod legs, the 4th is for the top of the little surface,
+    # the 5th for the sides of the surface the 6th for the bottom. The rest is unused currently.
+    texture: 'http://dl.dropbox.com/u/44243469/GunPack/Textures/tripodSprite.png'
+    # The hardness of the block. Some examples: obsidian: 50, cobblestone: 2, dirt: 0.5
+    hardness: 2.0
+    # thats the maximum amount of tripods allowed per player, put a negative value for infinite
+    max-count-per-player: 5
+    # sets wheater to force the player to zoom in on enter or not
+    force-zoom: true
+    # inventory size of the tripod NOTE: this has to be a multiple of 9
+    inventory-size: 9
+    # the crafting recipe, like in recipes.yml
+    recipe:
+        type: shaped
+        amount: 1
+        ingredients: blaze_rod, 0, blaze_rod, 0, cobblestone, 0, blaze_rod, 0, blaze_rod
+    
